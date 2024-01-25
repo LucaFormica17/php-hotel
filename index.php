@@ -56,16 +56,36 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-12">                
-                    <?php 
-                        foreach ($hotels as $hotel) {
-                            echo "<ul></ul>";
-                                foreach ($hotel as $value){
-                                    echo "<li>".$value."</li>";
+                <div class="col-12">  
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <?php 
+                                    foreach (array_keys($hotels[0]) as $key) {
+                                        echo "<th>".$key."</th>";
+                                    }
+                                ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                foreach($hotels as $hotel){
+                                    echo "<tr>";
+                                    foreach($hotel as $value){
+                                        if($value === true){
+                                            echo "<th>Yes</th>";
+                                        } elseif($value === false){
+                                            echo "<th>No</th>";
+                                        }
+                                        else{
+                                            echo "<th>".$value."</th>";
+                                        }
+                                    }
+                                    "</tr>";
                                 }
-                        }
-                    ?>
-
+                            ?>
+                        </tbody>
+                    </table>              
                 </div>
             </div>
         </div>
